@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slider</title>
+</head>
+<style>
+    .visible {
+        overflow: hidden;
+        width:250px;
+        height:200px;
+        background: red;
+        margin: 0 auto;
+    }
+    /*.container{*/
+    /*    left: 0px;*/
+    /*}*/
+    .container:hover {
+        left: 750px;
+    }
+    .container{
+        position: absolute;
+        display: inline;
+        /*width:750px;*/
+        /*height:200px;*/
+        border:0;
+        transition: left 3s;
+    }
+    .container img{
+        float:left;
+        width:250px;
+        height:200px;
+        border:0
+    }
+</style>
+<body>
+<script src="img-slider.js"></script>
+<div class="visible">
+<div class="container visible">
+    <div id="1"><img src="../img/p468166879.webp"></div>
+    <div id="2"><img src="../img/p468166887.webp"></div>
+    <div id="3"><img src="../img/p468166893.webp"></div>
+</div>
+</div>
+</body>
+</html>
