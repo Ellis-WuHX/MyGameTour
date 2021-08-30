@@ -116,11 +116,16 @@ class Cloud extends GuaImage {
     }
 
     setup() {
-        this.speed = config.cloud_speed
         // console.log("cloud speed", this.speed)
         this.x = randomBetween(0, 400)
         this.y = randomBetween(0, 200)
+        
     }
+
+    debug() {
+        this.speed = config.cloud_speed
+    }
+
 
     update() {
         this.y += this.speed

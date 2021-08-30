@@ -13,6 +13,7 @@ class GuaScene {
     constructor(game) {
         this.game = game
         this.elements = []
+        this.debugModaEnable = true
     }
 
     static new(game) {
@@ -34,9 +35,16 @@ class GuaScene {
     }
 
     update() {
-        for (let i = 0; i < this.elements.length; i++) {
-            var e = this.elements[i]
-            e.update()
+        if(this.debugModaEnable) {
+            for (let i = 0; i < this.elements.length; i++) {
+                var e = this.elements[i]
+                e.update() && e.debug()
+            }
+        } else {
+            for (let i = 0; i < this.elements.length; i++) {
+                var e = this.elements[i]
+                e.update()
+            }
         }
     }
 }
