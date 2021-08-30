@@ -22,9 +22,16 @@ class GuaScene {
     }
 
     draw() {
+        //for(var e of elements) {
+        //e.draw()
+        // }
+        //遍历
+        // for in\ for of\ forEach\ for i\ var i to n
         for (let i = 0; i < this.elements.length; i++) {
             var a = this.elements[i]
-            this.game.drawImage(a)
+            // this.game.drawImage(a)
+            //让元素自己draw
+            a.draw()
         }
     }
 
