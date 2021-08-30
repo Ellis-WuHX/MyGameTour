@@ -1,6 +1,6 @@
 class GuaImage {
     constructor(game, name) {
-        // this.game = game
+        this.game = game
         this.texture = game.textureByName(name)
         this.x = 0
         this.y = 0
@@ -36,7 +36,7 @@ class Player extends GuaImage {
     fire() {
         var x = this.x + this.w /2
         var y = this.y
-        var b = Bullet.new(this.game, "bullet")
+        var b = Bullet.new(this.game)
         b.x = x
         b.y = y
         this.scene.addElement(b)
@@ -113,7 +113,7 @@ class Bullet extends GuaImage {
     constructor(game, name) {
         // var type = randomBetween(0, 4)
         // var name = "enemy" + type
-        super (game, name)
+        super (game, "bullet")
         this.setup()
     }
 

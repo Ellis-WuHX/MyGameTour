@@ -28,6 +28,7 @@ class GuaScene {
     }
 
     addElement(guaImage) {
+        //得到父类
         guaImage.scene = this
         this.elements.push(guaImage)
     }
