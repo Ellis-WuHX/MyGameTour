@@ -1,6 +1,8 @@
 //单例:全局变量
 const config ={
     player_speed: 10,
+    cloud_speed: 1,
+    bullet_speed: 5,
 }
 class GuaImage {
     constructor(game, name) {
@@ -39,6 +41,7 @@ class Player extends GuaImage {
 
     update() {
         this.speed = config.player_speed
+        // console.log("Player speed", this.speed)
         if(this.cooldown > 0) {
             this.cooldown --
         }
@@ -77,7 +80,7 @@ class Player extends GuaImage {
 const randomBetween = function (start, end) {
     let s = Math.random() * (end - start + 1)
     // ~~s = Math.floor(s)
-    return ~~s
+    return Math.floor(s + start)
 
 }
 
@@ -97,6 +100,7 @@ class Enemy extends GuaImage {
 
     update() {
         this.y += this.speed
+        // console.log("Enemy speed", this.speed)
         if (this.y > 600) {
             this.setup()
         }
@@ -112,7 +116,8 @@ class Cloud extends GuaImage {
     }
 
     setup() {
-        this.speed = 1
+        this.speed = config.cloud_speed
+        // console.log("cloud speed", this.speed)
         this.x = randomBetween(0, 400)
         this.y = randomBetween(0, 200)
     }
@@ -134,7 +139,8 @@ class Bullet extends GuaImage {
     }
 
     setup() {
-        this.speed = 10
+        this.speed = config.bullet_speed
+        console.log("Bullet speed", this.speed)
     }
 
     update() {
