@@ -28,20 +28,105 @@
 <!--    </tr>-->
 <!--</table>-->
 <script>
+    const log = console.log.bind(console)
     // creat table
-    let table = document.createElement("table")
-    let creatTable = function () {
-        let tr = document.createElement("tr")
-        for (let i = 0; i < 20; i++) {
-            let td = document.createElement("td")
-            tr.appendChild(td)
-            table.appendChild(tr)
+    // let table = document.createElement("table")
+    // let creatTable = function () {
+    //     let tr = document.createElement("tr")
+    //     for (let i = 0; i < 20; i++) {
+    //         let td = document.createElement("td")
+    //         tr.appendChild(td)
+    //         table.appendChild(tr)
+    //     }
+    //     document.querySelector("body").appendChild(table)
+    // }
+    // for (let i = 0; i < 20; i++) {
+    //     creatTable()
+    // }
+
+    const ensure = function(condition, message) {
+    // 在条件不成立的时候, 输出 message
+    if (!condition) {
+        log('*** 测试失败', message)
+    } else {
+        log('+++ 测试成功')
+    }
+}
+
+class Stack {
+    constructor() {
+        this.data = []
+    }
+    // push 添加一个元素
+    push(e) {
+        this.data.push(e)
+    }
+
+    // pop 删除并返回最新添加的元素
+    pop() {
+        let index = this.data.length - 1
+        return this.data.splice(index, 1)
+    }
+
+    // top 仅返回最新添加的元素
+    top() {
+        let index = this.data.length - 1
+        return this.data[index]
+    }
+
+    size() {
+        let length = this.data.length
+        return length
+    }
+}
+
+const testSize = () => {
+    let s = new Stack()
+
+    s.push(1)
+    ensure(s.size() === 1, 'test size 1')
+
+    s.push(10)
+    ensure(s.size() === 2, 'test size 2')
+
+    s.push(20)
+    ensure(s.size() === 3, 'test size 3')
+}
+
+// testSize()
+
+    const validPair = function(s) {
+        /*
+        验证括号匹配
+        s 是这样的字符串 "((1 + 2) * 3)"
+        用栈来验证括号是否匹配
+        */
+        let stack1 = new Stack()
+        let stack2 = new Stack()
+        for (let i = 0; i < s.length; i++) {
+            if(s[i] === "(") {
+                stack1.push(s[i])
+            } else if(")" === s[i]) {
+                stack2.push(s[i])
+            }
         }
-        document.querySelector("body").appendChild(table)
+        return  stack1.size() === stack2.size();
     }
-    for (let i = 0; i < 20; i++) {
-        creatTable()
+
+    const testValidPair = () => {
+        let s1 = '(1 + 2)'
+        let s2 = '((1 + 2) * 3)'
+        let s3 = '((1 + 2) * 3))'
+
+        ensure(validPair(s1), 'test valid pair 1')
+        ensure(validPair(s2), 'test valid pair 2')
+        const result = validPair(s3)
+        log("result", result)
+        log("!result", !result)
+        ensure(!validPair(s3), 'test valid pair 3')
     }
+
+    testValidPair()
 </script>
 </body>
 </html>
